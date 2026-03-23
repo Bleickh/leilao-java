@@ -1,3 +1,7 @@
+
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -148,8 +152,16 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setValor(Integer.parseInt(valor));
         produto.setStatus(status);
         
+        try {
         ProdutosDAO produtodao = new ProdutosDAO();
         produtodao.cadastrarProduto(produto);
+
+        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+
+}   
+        catch (HeadlessException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+}
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
